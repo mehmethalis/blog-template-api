@@ -16,7 +16,7 @@ const postRouter=require('./routes/post');
 const app = express();
 
 //Connect to database
-mongoose.connect(process.env.DB_URL,{ useNewUrlParser: true ,useUnifiedTopology: true} ).then(()=>{
+mongoose.connect('mongodb+srv://root:try1234@blog-template.xhh4d.gcp.mongodb.net/blog-template?retryWrites=true&w=majority',{ useNewUrlParser: true ,useUnifiedTopology: true} ).then(()=>{
   console.log('Database connection success.');
 }).catch((err)=>{
   console.log(`Database connection failed: ${err}`);
