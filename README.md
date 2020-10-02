@@ -2,7 +2,7 @@
 Basic api for blog template. Node.js/Express.Js MongoDB-Moongoose
 
 # LIVE
-<a href='https://blog-template-api.herokuapp.com/'>Go Api</a>
+<a href='https://blog-template-api.herokuapp.com/' target='_blank'>Go Api</a>
 
 # Index
 | Route | HTTP Verb	 | POST body	 | Description	 |
