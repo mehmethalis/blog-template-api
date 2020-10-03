@@ -29,8 +29,8 @@ router.get('/:_id',(req,res)=>{
 
 //Post a main category
 router.post('/',authenticate,(req,res)=>{
-    const {title,metaTitle}=req.body;
-    const mainCategory=new MainCategory({title,metaTitle});
+    const {title,metaTitle,path}=req.body;
+    const mainCategory=new MainCategory({title,metaTitle,path});
     mainCategory.save((err,mainCategory)=>{
         if(err){
             res.json({error:err});
@@ -42,9 +42,9 @@ router.post('/',authenticate,(req,res)=>{
 
 //Update a main category
 router.put('/:_id',authenticate,(req,res)=>{
-    const {title,metaTitle}=req.body;
+    const {title,metaTitle,path}=req.body;
     const {_id}=req.params;
-    MainCategory.findOneAndUpdate(_id,{title:title,metaTitle:metaTitle}).then(()=>{
+    MainCategory.findOneAndUpdate(_id,{title:title,metaTitle:metaTitle,path:path}).then(()=>{
         res.json({status:1});
     }).catch((err)=>{
         res.json({status:0,error:err});

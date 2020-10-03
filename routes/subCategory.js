@@ -29,8 +29,8 @@ router.get('/:_id',(req,res)=>{
 
 //Post a sub category
 router.post('/',authenticate,(req,res)=>{
-    const {mainCategoryId,title,metaTitle}=req.body;
-    const subCategories=new SubCategory({mainCategoryId,title,metaTitle});
+    const {mainCategoryId,title,metaTitle,path}=req.body;
+    const subCategories=new SubCategory({mainCategoryId,title,metaTitle,path});
     subCategories.save((err,subCategories)=>{
         if(err){
             res.json({error:err});
@@ -42,9 +42,9 @@ router.post('/',authenticate,(req,res)=>{
 
 //Update a sub category
 router.put('/:_id',authenticate,(req,res)=>{
-    const {mainCategoryId,title,metaTitle}=req.body;
+    const {mainCategoryId,title,metaTitle,path}=req.body;
     const {_id}=req.params;
-    SubCategory.findOneAndUpdate(_id,{mainCategoryId:mainCategoryId,title:title,metaTitle:metaTitle}).then(()=>{
+    SubCategory.findOneAndUpdate(_id,{mainCategoryId:mainCategoryId,title:title,metaTitle:metaTitle,path:path}).then(()=>{
         res.json({status:1});
     }).catch((err)=>{
         res.json({status:0,error:err});

@@ -21,18 +21,18 @@ Basic api for blog template. Node.js/Express.Js MongoDB-Moongoose
 | Route | HTTP Verb	 | POST body	 | Description	 |
 | --- | --- | --- | --- |
 |/maincategory | `GET` | Empty | List all main category. |
-|/maincategory | `POST` | {'title':'foo',  'metaTitle':'bar',   'createdAt':"Default" } | Create a new main category. |
+|/maincategory | `POST` | {'title':'foo',  'metaTitle':'bar',   'path':'/first',   'createdAt':"Default" } | Create a new main category. |
 |/maincategory/:mainCategory_id | `GET` | Empty | Get a main category. |
-|/maincategory/:mainCategory_id | `PUT` | {'title':'foo',  'metaTitle':'bar',   'createdAt':"Default" } | Update a main category with new info. |
+|/maincategory/:mainCategory_id | `PUT` | {'title':'foo',  'metaTitle':'bar',   'path':'/first',   'createdAt':"Default" } | Update a main category with new info. |
 |/maincategory/:mainCategory_id | `DELETE` | Empty | Delete a main category.|
 
 # Sub Category
 | Route | HTTP Verb	 | POST body	 | Description	 |
 | --- | --- | --- | --- |
 |/subcategory | `GET` | Empty | List all sub category. |
-|/subcategory | `POST` | {'mainCategoryId':"12axvrtyte84554",   'title':'foo',  'metaTitle':'bar',   'createdAt':"Default" } | Create a new sub category. |
+|/subcategory | `POST` | {'mainCategoryId':"12axvrtyte84554",   'title':'foo',  'metaTitle':'bar',  'path':'/first',   'createdAt':"Default" } | Create a new sub category. |
 |/subcategory/:subCategory_id | `GET` | Empty | Get a sub category. |
-|/subcategory/:subCategory_id | `PUT` | {'mainCategoryId':"12axvrtyte84554",   'title':'foo',  'metaTitle':'bar',   'createdAt':"Default" } | Update a sub category with new info. |
+|/subcategory/:subCategory_id | `PUT` | {'mainCategoryId':"12axvrtyte84554",   'title':'foo',  'metaTitle':'bar',   'path':'/first',   'createdAt':"Default" } | Update a sub category with new info. |
 |/subcategory/:subCategory_id | `DELETE` | Empty | Delete a sub category.|
 
 # Comment

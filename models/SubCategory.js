@@ -15,6 +15,10 @@ const SubCategorySchema=new Schema({
         type:String,
         require:true
     },
+    path:{
+      type:String,
+      require:true
+    },
     createdAt:{
         type: Date,
         default: Date.now
