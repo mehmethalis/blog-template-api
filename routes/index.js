@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken');
 const User=require('../models/User');
-const config=require('../config');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -42,7 +42,7 @@ router.post('/authenticate',(req,res)=>{
       const match = bcrypt.compare(password, user.password);
       if(match){
         const payload={username};
-        const token=jwt.sign(payload,config.API_SECRET_KEY,{expiresIn: 720 /*12 hour*/});
+        const token=jwt.sign(payload,process.env.API_SECRET_KEY,{expiresIn: 720 /*12 hour*/});
         res.json({status:1,token:token});
       }else{
         res.json({status:0,message:'Authenticate failed,wrong password.'})
