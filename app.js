@@ -18,7 +18,7 @@ const postRouter=require('./routes/post');
 const app = express();
 
 //Connect to database
-mongoose.connect(config.DB_URL,{ useNewUrlParser: true ,useUnifiedTopology: true} ).then(()=>{
+mongoose.connect(config.DB_URL ,{ useNewUrlParser: true ,useUnifiedTopology: true} ).then(()=>{
   console.log('Database connection success.');
 }).catch((err)=>{
   console.log(`Database connection failed: ${err}`);
