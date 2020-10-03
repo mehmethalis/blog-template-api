@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose=require('mongoose');
 
+const config =require('./config');
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -16,7 +18,7 @@ const postRouter=require('./routes/post');
 const app = express();
 
 //Connect to database
-mongoose.connect('mongodb+srv://root:try1234@blog-template.xhh4d.gcp.mongodb.net/blog-template?retryWrites=true&w=majority',{ useNewUrlParser: true ,useUnifiedTopology: true} ).then(()=>{
+mongoose.connect(config.DB_URL,{ useNewUrlParser: true ,useUnifiedTopology: true} ).then(()=>{
   console.log('Database connection success.');
 }).catch((err)=>{
   console.log(`Database connection failed: ${err}`);

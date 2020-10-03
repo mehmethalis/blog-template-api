@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken');
 const User=require('../models/User');
+const config=require('../config');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -31,26 +32,25 @@ router.post('/register', function(req, res, next) {
 
 router.post('/authenticate',(req,res)=>{
   const {username,password} =req.body;
-
+  
   User.findOne({username},(err,user)=>{
     if(err) throw err;
-
+    
     if(!user){
       res.json({status:0,message:'Authenticate failed,user not found.'});
     }else{
-      //check password
-      bcrypt.compare(password, user.password, function(err, result) {
-        if(!result){
-          res.json({status:0,message:'Authenticate failed,wrong password.'});
-        }else{
-          const payload={username};
-          const token=jwt.sign(payload,process.env.API_SECRET_KEY,{expiresIn: 720 /*12 hour*/});
-          res.json({status:1,token:token});
-        }
-
-      });
+      const match = bcrypt.compare(password, user.password);
+      if(match){
+        const payload={username};
+        const token=jwt.sign(payload,config.API_SECRET_KEY,{expiresIn: 720 /*12 hour*/});
+        res.json({status:1,token:token});
+      }else{
+        res.json({status:0,message:'Authenticate failed,wrong password.'})
+      }
     }
-  })
+  });
+
 })
+
 
 module.exports = router;
