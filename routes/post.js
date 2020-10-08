@@ -45,7 +45,7 @@ const processImages = async () => {
 
 
 //Get all posts
-router.get('/',authenticate,(req,res)=>{
+router.get('/',(req,res)=>{
     Post.find({},(err,posts)=>{
         if (err){
             res.json({error:err});
