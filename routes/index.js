@@ -11,6 +11,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/***User Register Form */
+router.get('/register', (req,res)=>{
+  res.render('register', { title: 'Register' });
+});
+
 /* User register post endpoint */
 router.post('/register', function(req, res, next) {
   const {name,surname,username,email,password}=req.body;
@@ -30,6 +35,7 @@ router.post('/register', function(req, res, next) {
     });
   });
 });
+
 
 router.post('/authenticate',(req,res)=>{
   const {username,password} =req.body;
